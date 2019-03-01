@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">ToDoApp</string>
+    <string name="editor_insert_note_failed">Note save unsuccessful</string>
+    <string name="editor_insert_note_successful">Note saved Successfully</string>
+    <string name="editor_update_note_failed">Note update unsuccessful</string>
+    <string name="editor_update_note_successful">Note updated successfully</string>
+    <string name="editor_delete_note_failed">Error with deleting note</string>
+    <string name="editor_delete_note_successful">Note deleted</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_save">Save</string>
+    <string name="editor_activity">Editor Activity</string>
+    <string name="detail_activity">Detail Activity</string>
 </resources>

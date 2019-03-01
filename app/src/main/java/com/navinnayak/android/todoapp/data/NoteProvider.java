@@ -67,13 +67,13 @@ public class NoteProvider extends ContentProvider {
 
     private Uri insertNote(Uri uri, ContentValues values) {
         String noteTitle = values.getAsString(NoteEntry.COLUMN_TITLE);
-        if (noteTitle == null) {
-            throw new IllegalArgumentException("title required");
-        }
+//        if (noteTitle == null) {
+//            throw new IllegalArgumentException("title required");
+//        }
         String noteDesc = values.getAsString(NoteEntry.COLUMN_DESC);
-        if (noteDesc == null) {
-            throw new IllegalArgumentException("description needed");
-        }
+//        if (noteDesc == null) {
+//            throw new IllegalArgumentException("description needed");
+//        }
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
         long id = database.insert(NoteEntry.TABLE_NAME, null, values);
         if (id == -1) {
@@ -113,6 +113,10 @@ public class NoteProvider extends ContentProvider {
                 throw new IllegalArgumentException("description needed");
             }
         }
+        if (values.size() == 0) {
+            return 0;
+        }
+
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
         int rowsupdated = database.update(NoteEntry.TABLE_NAME, values, selection, selectionArgs);
         if (rowsupdated != 0) {

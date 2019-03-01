@@ -12,7 +12,7 @@ public class NoteDbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
 
-    private NoteDbHelper(Context context) {
+    public NoteDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -21,11 +21,10 @@ public class NoteDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String SQL_CREATE_NOTES_TABLE = " CREATE TABLE " + NoteEntry.TABLE_NAME + " ("
                 + NoteEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + NoteEntry.COLUMN_TITLE + " TEXT NOT NULL, "
-                + NoteEntry.COLUMN_DESC + " BLOB NOT NULL, "
+                + NoteEntry.COLUMN_TITLE + " TEXT,  "
+                + NoteEntry.COLUMN_DESC + " TEXT, "
                 + NoteEntry.COLUMN_DONE_NOTDONE + " INTEGER, "
-                + NoteEntry.COLUMN_DATE + " DATE, "
-                + NoteEntry.COLUMN_TIME + " TIME); ";
+                + NoteEntry.COLUMN_DATE_TIME + " TEXT); ";
         db.execSQL(SQL_CREATE_NOTES_TABLE);
     }
 
