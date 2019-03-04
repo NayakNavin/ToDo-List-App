@@ -23,6 +23,9 @@ import android.widget.Toast;
 
 import com.navinnayak.android.todoapp.data.NoteContract.NoteEntry;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final int EXISTING_NOTE_LOADER = 0;
@@ -72,6 +75,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void saveNote() {
         String titleString = titleTextEdit.getText().toString();
         String descString = descTextEdit.getText().toString();
+        SimpleDateFormat dtFormat = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss");
 
         ContentValues values = new ContentValues();
 
@@ -82,6 +86,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return;
         }
         values.put(NoteEntry.COLUMN_DESC, descString);
+        values.put(NoteEntry.COLUMN_DATE_TIME, dtFormat.format(new Date()));
+
 
         if (mCurrentNoteUri == null) {
             Uri newUri = getContentResolver().insert(NoteEntry.CONTENT_URI, values);
@@ -127,7 +133,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String[] projection = {
                 NoteEntry._ID,
                 NoteEntry.COLUMN_TITLE,
-                NoteEntry.COLUMN_DESC
+                NoteEntry.COLUMN_DESC,
+                NoteEntry.COLUMN_DATE_TIME
         };
         return new CursorLoader(this,
                 mCurrentNoteUri,

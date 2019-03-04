@@ -12,7 +12,7 @@ import android.util.Log;
 import com.navinnayak.android.todoapp.data.NoteContract.NoteEntry;
 
 public class NoteProvider extends ContentProvider {
-    
+
     private static final int NOTES = 100;
     private static final int NOTE_ID = 101;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -66,6 +66,7 @@ public class NoteProvider extends ContentProvider {
     private Uri insertNote(Uri uri, ContentValues values) {
         values.getAsString(NoteEntry.COLUMN_TITLE);
         values.getAsString(NoteEntry.COLUMN_DESC);
+        values.getAsString(NoteEntry.COLUMN_DATE_TIME);
 
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
         long id = database.insert(NoteEntry.TABLE_NAME, null, values);
@@ -103,6 +104,12 @@ public class NoteProvider extends ContentProvider {
             String noteDesc = values.getAsString(NoteEntry.COLUMN_DESC);
             if (noteDesc == null) {
                 throw new IllegalArgumentException("description needed");
+            }
+        }
+        if (values.containsKey(NoteEntry.COLUMN_DATE_TIME)) {
+            String noteDateTime = values.getAsString(NoteEntry.COLUMN_DATE_TIME);
+            if (noteDateTime == null) {
+                throw new IllegalArgumentException("date needed");
             }
         }
         if (values.size() == 0) {

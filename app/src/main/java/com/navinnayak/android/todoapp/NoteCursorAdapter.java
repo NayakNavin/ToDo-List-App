@@ -26,12 +26,15 @@ public class NoteCursorAdapter extends CursorAdapter {
 
         TextView titleTextView = view.findViewById(R.id.titleText);
         TextView descTextView = view.findViewById(R.id.subText);
+        TextView dateTextView = view.findViewById(R.id.dateText);
 
+        int dateColunIndex = cursor.getColumnIndex(NoteEntry.COLUMN_DATE_TIME);
         int titleColumnIndex = cursor.getColumnIndex(NoteEntry.COLUMN_TITLE);
         int descColumnIndex = cursor.getColumnIndex(NoteEntry.COLUMN_DESC);
 
         titleTextView.setText(cursor.getString(titleColumnIndex));
         descTextView.setText(cursor.getString(descColumnIndex));
+        dateTextView.setText(cursor.getString(dateColunIndex));
 
     }
 }

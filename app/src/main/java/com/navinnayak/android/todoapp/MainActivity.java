@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import com.navinnayak.android.todoapp.data.NoteContract.NoteEntry;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int NOTE_LOADER = 0;
@@ -64,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         String[] projection = {
                 NoteEntry._ID,
                 NoteEntry.COLUMN_TITLE,
-                NoteEntry.COLUMN_DESC
+                NoteEntry.COLUMN_DESC,
+                NoteEntry.COLUMN_DATE_TIME
 
         };
         return new CursorLoader(this,
@@ -86,9 +90,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void insertProduct() {
+        SimpleDateFormat dtFormat = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss");
+
         ContentValues values = new ContentValues();
         values.put(NoteEntry.COLUMN_TITLE, "Sennheiser PXC 550");
         values.put(NoteEntry.COLUMN_DESC, "29999 hsdfihjodjoc dfijo ");
+        values.put(NoteEntry.COLUMN_DATE_TIME, dtFormat.format(new Date()));
 
         Uri newUri = getContentResolver().insert(NoteEntry.CONTENT_URI, values);
         if (newUri == null) {

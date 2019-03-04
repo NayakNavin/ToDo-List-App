@@ -84,7 +84,8 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         String[] projection = {
                 NoteEntry._ID,
                 NoteEntry.COLUMN_TITLE,
-                NoteEntry.COLUMN_DESC
+                NoteEntry.COLUMN_DESC,
+                NoteEntry.COLUMN_DATE_TIME
         };
 
         return new CursorLoader(this,
