@@ -10,4 +10,15 @@
     <string name="action_save">Save</string>
     <string name="editor_activity">Editor Activity</string>
     <string name="detail_activity">Detail Activity</string>
+    <string name="action_dummy">Dummy</string>
+    <string name="editor_activity_title_new_note">New Note</string>
+    <string name="editor_activity_title_edit_note">Edit Note</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit ?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Wait</string>
+    <string name="editor__note_notnull">Title can\'t be empty</string>
+    <string name="delete_confirmation_dialog">Are you sure you want to delete this note?</string>
+    <string name="cancel">cancel</string>
+    <string name="ok">ok</string>
+    <string name="delete">Delete:</string>
 </resources>

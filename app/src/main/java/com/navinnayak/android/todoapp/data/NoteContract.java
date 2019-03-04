@@ -26,17 +26,13 @@ public final class NoteContract {
         public final static String _ID = BaseColumns._ID;
         public final static String COLUMN_TITLE = "title";
         public final static String COLUMN_DESC = "description";
-        public final static String COLUMN_DATE_TIME = "datetime";
-        public final static String COLUMN_DONE_NOTDONE = "completed";
+        //        public final static String COLUMN_DATE_TIME = "datetime";
+        //        public final static String COLUMN_DONE_NOTDONE = "completed";
         public static final int CHECKED = 1;
         public static final int UNCHECKED = 0;
 
         public static boolean isValidCheckBox(int completed) {
             return completed == CHECKED || completed == UNCHECKED;
         }
-
-
     }
-
-
 }

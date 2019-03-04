@@ -12,8 +12,7 @@ import android.util.Log;
 import com.navinnayak.android.todoapp.data.NoteContract.NoteEntry;
 
 public class NoteProvider extends ContentProvider {
-
-
+    
     private static final int NOTES = 100;
     private static final int NOTE_ID = 101;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -21,7 +20,6 @@ public class NoteProvider extends ContentProvider {
     static {
         sUriMatcher.addURI(NoteContract.CONTENT_AUTHORITY, NoteContract.PATH_NOTES, NOTES);
         sUriMatcher.addURI(NoteContract.CONTENT_AUTHORITY, NoteContract.PATH_NOTES + "/#", NOTE_ID);
-
     }
 
     private NoteDbHelper mDbHelper;
@@ -66,14 +64,9 @@ public class NoteProvider extends ContentProvider {
     }
 
     private Uri insertNote(Uri uri, ContentValues values) {
-        String noteTitle = values.getAsString(NoteEntry.COLUMN_TITLE);
-//        if (noteTitle == null) {
-//            throw new IllegalArgumentException("title required");
-//        }
-        String noteDesc = values.getAsString(NoteEntry.COLUMN_DESC);
-//        if (noteDesc == null) {
-//            throw new IllegalArgumentException("description needed");
-//        }
+        values.getAsString(NoteEntry.COLUMN_TITLE);
+        values.getAsString(NoteEntry.COLUMN_DESC);
+
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
         long id = database.insert(NoteEntry.TABLE_NAME, null, values);
         if (id == -1) {
@@ -98,7 +91,6 @@ public class NoteProvider extends ContentProvider {
                 throw new IllegalArgumentException("Update is not supported for " + uri);
         }
     }
-
 
     private int updateNote(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         if (values.containsKey(NoteEntry.COLUMN_TITLE)) {
@@ -145,8 +137,6 @@ public class NoteProvider extends ContentProvider {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return rowsDeleted;
-
-
     }
 
     @Override
@@ -161,5 +151,4 @@ public class NoteProvider extends ContentProvider {
                 throw new IllegalStateException("Unknown  URI" + uri + "with match" + match);
         }
     }
-
 }

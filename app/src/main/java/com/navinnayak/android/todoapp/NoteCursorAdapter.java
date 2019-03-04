@@ -6,6 +6,9 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.navinnayak.android.todoapp.data.NoteContract.NoteEntry;
 
 public class NoteCursorAdapter extends CursorAdapter {
 
@@ -19,9 +22,16 @@ public class NoteCursorAdapter extends CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(final View view, final Context context, final Cursor cursor) {
+
+        TextView titleTextView = view.findViewById(R.id.titleText);
+        TextView descTextView = view.findViewById(R.id.subText);
+
+        int titleColumnIndex = cursor.getColumnIndex(NoteEntry.COLUMN_TITLE);
+        int descColumnIndex = cursor.getColumnIndex(NoteEntry.COLUMN_DESC);
+
+        titleTextView.setText(cursor.getString(titleColumnIndex));
+        descTextView.setText(cursor.getString(descColumnIndex));
 
     }
-
-
 }
