@@ -21,4 +21,6 @@
     <string name="cancel">cancel</string>
     <string name="ok">ok</string>
     <string name="delete">Delete:</string>
+    <string name="title">Note Title</string>
+    <string name="writing">Start writing</string>
 </resources>

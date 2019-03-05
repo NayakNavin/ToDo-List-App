@@ -10,6 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_16dp"
+        android:background="@null"
+        android:hint="@string/title"
         android:inputType="textCapWords"
         android:textColor="@android:color/black"
         android:textStyle="bold"
@@ -22,6 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_16dp"
+        android:background="@null"
+        android:hint="@string/writing"
+        android:inputType="textMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/titleEdit"
         tools:text="content Edit" />
 
